@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zuniq Studio | AI Automation by Jawad Ullah</title>
-    
-    <!-- SEO & Social Media -->
+
     <meta name="description" content="Zuniq Studio - AI Automation & Websites by Jawad Ullah. Helping small businesses save time and capture leads.">
     <meta property="og:title" content="Zuniq Studio | AI Automation & Web Studio">
     <meta property="og:description" content="I build smart AI agents and high-converting websites for businesses.">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -36,53 +34,210 @@
 
     <style>
         body { background-color: #0B0F19; color: #E2E8F0; overflow-x: hidden; }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(37, 99, 235, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.15);
+        }
+
         .text-gradient {
             background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .bg-dots {
             background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        #typewriter::after { content: "|"; animation: blink 0.7s infinite; }
+
+        .mesh-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #typewriter::after { content: "|"; animation: blink 0.7s infinite; color: #06B6D4; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Modal Style */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
-        .modal-content { background-color: #0B0F19; margin: 10% auto; padding: 30px; border: 1px solid #1e293b; width: 90%; max-width: 600px; border-radius: 20px; }
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+        }
+        .btn-shine:hover::before { left: 100%; }
+
+        .btn-ripple { position: relative; overflow: hidden; }
+        .btn-ripple .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            transform: scale(0);
+            animation: ripple-anim 0.7s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        .marquee-wrap {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            user-select: none;
+        }
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 40s linear infinite;
+            will-change: transform;
+        }
+        .marquee-reverse .marquee-track {
+            animation: marquee-reverse 45s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-reverse {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .marquee-item {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.03);
+            padding: 0 1.5rem;
+            display: inline-block;
+            white-space: nowrap;
+            line-height: 1;
+        }
+        .marquee-item .dot {
+            color: rgba(37, 99, 235, 0.2);
+            margin: 0 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .marquee-item { font-size: 7rem; }
+        }
+
+        .whatsapp-float { animation: float-wa 3s ease-in-out infinite; }
+        @keyframes float-wa {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .whatsapp-float::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: rgba(34, 197, 94, 0.5);
+            z-index: -1;
+            animation: wa-pulse 2s ease-out infinite;
+        }
+        @keyframes wa-pulse {
+            0%   { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.9); opacity: 0; }
+        }
+
+        .modal { display: none; position: fixed; z-index: 100; inset: 0; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
+        .modal.show { display: block; animation: fadeIn 0.3s ease-out; }
+        .modal-content { background-color: #0B0F19; margin: 8% auto; padding: 32px; border: 1px solid #1e293b; width: 90%; max-width: 600px; border-radius: 24px; animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .spin-slow { animation: rotate-slow 6s linear infinite; }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+        .pulse-dot { animation: pulse-dot 2s infinite; }
+
+        ::selection { background: rgba(37, 99, 235, 0.4); color: #fff; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #060910; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563EB; }
     </style>
 </head>
 <body class="bg-dots">
 
+    <!-- Floating mesh glows -->
+    <div class="mesh-glow w-[500px] h-[500px] bg-blue-500 top-[-100px] right-[-100px]"></div>
+    <div class="mesh-glow w-[400px] h-[400px] bg-cyan-500 top-[400px] left-[-150px]"></div>
+    <div class="mesh-glow w-[600px] h-[600px] bg-blue-600 bottom-[200px] right-[-200px]"></div>
+
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/923299073689" target="_blank" class="fixed bottom-6 right-6 z-[99] bg-green-500 p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
-        <i data-lucide="message-circle" class="text-white w-6 h-6"></i>
+    <a href="https://wa.me/923185390057?text=Assalam%20o%20Alaikum%20Jawad" target="_blank" rel="noopener"
+       class="whatsapp-float fixed bottom-6 right-6 z-[99] bg-green-500 p-4 rounded-full shadow-2xl shadow-green-500/40 hover:scale-110 active:scale-95 transition-transform flex items-center justify-center group">
+        <i data-lucide="message-circle" class="text-white w-7 h-7"></i>
+        <span class="absolute right-full mr-3 bg-dark text-white text-xs font-bold py-2 px-3 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity border border-white/10">Chat on WhatsApp</span>
     </a>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-xl font-extrabold tracking-tight">
+            <div class="text-xl font-extrabold tracking-tight flex items-center gap-3">
+                <div class="relative h-10 w-10 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accentBlue to-accentCyan spin-slow blur-[1px]"></div>
+                    <div class="absolute inset-[2px] bg-dark rounded-full"></div>
+                    <span class="relative z-10 text-sm font-black text-white">Z</span>
+                </div>
                 <a href="#"><span class="text-gradient">ZUNIQ</span> STUDIO</a>
             </div>
-            
+
             <div class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="#about" class="hover:text-white transition-colors">About Me</a>
-                <a href="#work" class="hover:text-white transition-colors">Demos</a>
-                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#about" class="hover:text-white transition-colors relative group">
+                    About Me
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-accentCyan group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#services" class="hover:text-white transition-colors relative group">
+                    Services
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-accentCyan group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#work" class="hover:text-white transition-colors relative group">
+                    Demos
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-accentCyan group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#contact" class="hover:text-white transition-colors relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-accentCyan group-hover:w-full transition-all duration-300"></span>
+                </a>
             </div>
 
             <div class="flex items-center space-x-3">
-                <a href="https://calendly.com/zuniq-studio/30min" target="_blank" class="bg-accentBlue hover:bg-blue-600 px-4 py-2 rounded-lg text-white text-xs font-bold transition-all">
+                <a href="https://calendly.com/zuniq-studio/30min" target="_blank"
+                   class="btn-shine bg-accentBlue hover:bg-blue-600 px-4 py-2 rounded-lg text-white text-xs font-bold transition-all hidden sm:inline-block">
                     Book a Free Call
                 </a>
             </div>
@@ -90,10 +245,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-40 pb-20 px-6">
-        <div class="max-w-7xl mx-auto text-center lg:text-left grid lg:grid-cols-2 gap-12 items-center">
+    <section class="relative pt-40 pb-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center lg:text-left grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal">
-                <!-- Mobile Fixed Headline: text-4xl on mobile, text-7xl on desktop -->
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                    <span class="h-2 w-2 bg-green-500 rounded-full pulse-dot"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-300">Available for New Projects</span>
+                </div>
                 <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-6">
                     AI Automation & <br>
                     <span class="text-gradient">Websites That Grow</span>
@@ -102,30 +260,41 @@
                     <p id="typewriter" class="text-lg md:text-xl text-gray-400 font-medium italic"></p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="https://calendly.com/zuniq-studio/30min" target="_blank" class="px-8 py-4 bg-gradient-to-r from-accentBlue to-accentCyan rounded-xl font-bold text-center shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
+                    <a href="https://calendly.com/zuniq-studio/30min" target="_blank"
+                       class="btn-ripple btn-shine px-8 py-4 bg-gradient-to-r from-accentBlue to-accentCyan rounded-xl font-bold text-center shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
                         Book a Free Call
                     </a>
-                    <a href="#work" class="px-8 py-4 border border-white/10 rounded-xl font-bold text-center hover:bg-white/5 transition-all">
+                    <a href="#work"
+                       class="btn-ripple px-8 py-4 border border-white/10 rounded-xl font-bold text-center hover:bg-white/5 hover:border-accentCyan/50 transition-all">
                         View Our Work
                     </a>
                 </div>
             </div>
             <div class="hidden lg:block reveal delay-200">
-                <div class="glass-card p-8 rounded-[2rem] border border-white/10">
+                <div class="glass-card p-8 rounded-[2rem]">
                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
                     </div>
                     <p class="font-mono text-sm text-blue-400">> Jawad Ullah: Solo Builder Mode Active</p>
-                    <p class="font-mono text-sm text-gray-500">> Deploying AI workflows for Peshawar small businesses...</p>
+                    <p class="font-mono text-sm text-gray-500">> Deploying AI workflows for businesses...</p>
                     <div class="mt-6 p-4 bg-white/5 rounded-lg border border-white/5">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-gray-400">Lead Capture Rate</span>
                             <span class="text-xs text-green-400">+85%</span>
                         </div>
                         <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                            <div class="bg-accentBlue h-full w-[85%] animate-pulse"></div>
+                            <div class="bg-gradient-to-r from-accentBlue to-accentCyan h-full w-[85%] animate-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/5 rounded-lg border border-white/5">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-gray-400">Response Time</span>
+                            <span class="text-xs text-green-400">Instant</span>
+                        </div>
+                        <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-accentBlue to-accentCyan h-full w-[95%]"></div>
                         </div>
                     </div>
                 </div>
@@ -133,71 +302,170 @@
         </div>
     </section>
 
-    <!-- About Section (Personalized) -->
-    <section id="about" class="py-24 px-6 bg-darker/50">
-        <div class="max-w-4xl mx-auto">
+    <!-- Marquee Services Banner #1 -->
+    <div class="marquee-wrap relative py-8 border-y border-white/5 bg-darker/50">
+        <div class="marquee-track">
+            <span class="marquee-item">AI Agents <span class="dot">•</span></span>
+            <span class="marquee-item">Chatbots <span class="dot">•</span></span>
+            <span class="marquee-item">Web Design <span class="dot">•</span></span>
+            <span class="marquee-item">Automation <span class="dot">•</span></span>
+            <span class="marquee-item">Lead Capture <span class="dot">•</span></span>
+            <span class="marquee-item">Next.js <span class="dot">•</span></span>
+            <span class="marquee-item">n8n Workflows <span class="dot">•</span></span>
+            <span class="marquee-item">OpenAI <span class="dot">•</span></span>
+            <span class="marquee-item">AI Agents <span class="dot">•</span></span>
+            <span class="marquee-item">Chatbots <span class="dot">•</span></span>
+            <span class="marquee-item">Web Design <span class="dot">•</span></span>
+            <span class="marquee-item">Automation <span class="dot">•</span></span>
+            <span class="marquee-item">Lead Capture <span class="dot">•</span></span>
+            <span class="marquee-item">Next.js <span class="dot">•</span></span>
+            <span class="marquee-item">n8n Workflows <span class="dot">•</span></span>
+            <span class="marquee-item">OpenAI <span class="dot">•</span></span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-darker/50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
             <div class="reveal mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Who I Am</h2>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan mb-4 italic">The Builder</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Who I Am</h2>
                 <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                    I’m <span class="text-white font-bold underline decoration-accentBlue">Jawad Ullah</span>, a solo AI automation developer based in **Peshawar**. I founded Zuniq Studio with one simple goal: to help small businesses save time and capture more leads through smart automation.
+                    I'm <span class="text-white font-bold underline decoration-accentBlue decoration-2 underline-offset-4">Jawad Ullah</span>, a solo AI automation developer based in <span class="text-white font-semibold">Peshawar</span>. I founded Zuniq Studio with one simple goal: to help small businesses save time and capture more leads through smart automation.
                 </p>
                 <p class="text-gray-400 text-lg leading-relaxed">
-                    I’m not a large agency — I’m a hands-on builder who writes the code, designs the workflows, and deploys the final product myself. You get direct access to the person actually doing the work.
+                    I'm not a large agency — I'm a hands-on builder who writes the code, designs the workflows, and deploys the final product myself. You get direct access to the person actually doing the work.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 reveal">
+            <div class="grid md:grid-cols-2 gap-6 reveal">
                 <div class="glass-card p-8 rounded-3xl">
                     <h3 class="text-xl font-bold mb-4 flex items-center text-accentCyan">
-                        <i data-lucide="check-circle" class="mr-2"></i> My Commitment
+                        <i data-lucide="check-circle" class="mr-3"></i> My Commitment
                     </h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        I deliver working solutions and won’t stop until you’re satisfied. Your project won't be lost in a pipeline — you’ll have my full attention.
+                        I deliver working solutions and won't stop until you're satisfied. Your project won't be lost in a pipeline — you'll have my full attention.
                     </p>
                 </div>
-                <div class="glass-card p-8 rounded-3xl border-accentBlue/20">
+                <div class="glass-card p-8 rounded-3xl">
                     <h3 class="text-xl font-bold mb-4 flex items-center text-accentBlue">
-                        <i data-lucide="zap" class="mr-2"></i> Why Work With Me?
+                        <i data-lucide="zap" class="mr-3"></i> Why Work With Me?
                     </h3>
                     <ul class="text-gray-400 text-sm space-y-2">
-                        <li>• Live Demos, Not Promises</li>
-                        <li>• No Tech Jargon, Just Results</li>
-                        <li>• Affordable & Flexible Rates</li>
-                        <li>• Modern Stack (OpenAI, n8n, Next.js)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Live Demos, Not Promises</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> No Tech Jargon, Just Results</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Affordable &amp; Flexible Rates</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Modern Stack (OpenAI, n8n, Next.js)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Built So Far (Demos) -->
-    <section id="work" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What I’ve Built So Far</h2>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan mb-4 italic">What I Do</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Services Built to <span class="text-gradient">Scale You</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">High-impact solutions crafted for modern businesses.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-3xl reveal">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="bot" class="text-blue-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI Chatbots</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Custom AI agents that answer questions, qualify leads, and book appointments automatically — 24/7.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl reveal delay-100">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="workflow" class="text-cyan-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Business Automation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Connect your apps, CRMs, and inbox. Save hours every week with n8n and Make workflows.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl reveal delay-200">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="globe" class="text-purple-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Fast, elegant Next.js websites designed to convert visitors into paying customers.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl reveal">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="message-square" class="text-green-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WhatsApp Automation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Smart WhatsApp agents that reply instantly and turn messages into meetings.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl reveal delay-100">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="target" class="text-orange-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lead Capture</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Systems that capture, score, and follow-up on leads so no opportunity slips through.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl reveal delay-200">
+                    <div class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="sparkles" class="text-pink-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Custom AI Solutions</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Have a unique problem? I'll design and build the exact AI system your business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Services Banner #2 -->
+    <div class="marquee-wrap marquee-reverse relative py-8 border-y border-white/5 bg-darker/50">
+        <div class="marquee-track">
+            <span class="marquee-item">Let's Build <span class="dot">✦</span></span>
+            <span class="marquee-item">Zuniq Studio <span class="dot">✦</span></span>
+            <span class="marquee-item">Peshawar <span class="dot">✦</span></span>
+            <span class="marquee-item">AI First <span class="dot">✦</span></span>
+            <span class="marquee-item">Made in Pakistan <span class="dot">✦</span></span>
+            <span class="marquee-item">Book a Call <span class="dot">✦</span></span>
+            <span class="marquee-item">Let's Build <span class="dot">✦</span></span>
+            <span class="marquee-item">Zuniq Studio <span class="dot">✦</span></span>
+            <span class="marquee-item">Peshawar <span class="dot">✦</span></span>
+            <span class="marquee-item">AI First <span class="dot">✦</span></span>
+            <span class="marquee-item">Made in Pakistan <span class="dot">✦</span></span>
+            <span class="marquee-item">Book a Call <span class="dot">✦</span></span>
+        </div>
+    </div>
+
+    <!-- Built So Far (Demos) -->
+    <section id="work" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan mb-4 italic">Live Demos</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">What I've Built So Far</h2>
                 <p class="text-gray-400">Functional AI agents solving real business problems.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Demo 1 -->
                 <div class="glass-card p-8 rounded-3xl reveal">
                     <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="home" class="text-blue-400"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Cleaning Company Bot</h3>
                     <p class="text-gray-400 text-sm mb-6">Handles FAQs, pricing, and prayer break inquiries using Botpress and Google Sheets.</p>
-                    <a href="https://bit.ly/3QLPTCf" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline">Try Demo →</a>
+                    <a href="https://bit.ly/3QLPTCf" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline inline-flex items-center gap-1 group">
+                        Try Demo <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
                 </div>
-                <!-- Demo 2 -->
                 <div class="glass-card p-8 rounded-3xl reveal delay-100">
                     <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="user-plus" class="text-cyan-400"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Jotform AI Lead Agent</h3>
                     <p class="text-gray-400 text-sm mb-6">A lead capture agent that can be embedded in any website within minutes to qualify leads.</p>
-                    <a href="https://agent.jotform.com/019f3239d61870008ea2cda1401fa666044a" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline">Try Demo →</a>
+                    <a href="https://agent.jotform.com/019f3239d61870008ea2cda1401fa666044a" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline inline-flex items-center gap-1 group">
+                        Try Demo <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
                 </div>
-                <!-- Demo 3 -->
                 <div class="glass-card p-8 rounded-3xl reveal delay-200">
                     <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="smartphone" class="text-purple-400"></i>
@@ -205,6 +473,27 @@
                     <h3 class="text-xl font-bold mb-3">Mobile Walk-in Demo</h3>
                     <p class="text-gray-400 text-sm mb-6">A mobile-ready concept proving AI value in under two minutes for walk-in meetings.</p>
                     <span class="text-gray-600 font-bold text-xs uppercase tracking-widest italic">Live During Meeting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="glass-card p-10 md:p-16 rounded-[2rem] text-center reveal">
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan mb-4 italic">Let's Talk</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to <span class="text-gradient">Automate Your Business?</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-10">Book a free 30-minute call. No pitch, no pressure — just a conversation about what AI can do for you.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://calendly.com/zuniq-studio/30min" target="_blank"
+                       class="btn-ripple btn-shine px-8 py-4 bg-gradient-to-r from-accentBlue to-accentCyan rounded-xl font-bold shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
+                        Book a Free Call
+                    </a>
+                    <a href="https://wa.me/923185390057?text=Assalam%20o%20Alaikum%20Jawad" target="_blank"
+                       class="btn-ripple px-8 py-4 border border-white/10 rounded-xl font-bold hover:bg-white/5 hover:border-green-500/50 transition-all inline-flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-green-400"></i> WhatsApp Me
+                    </a>
                 </div>
             </div>
         </div>
@@ -222,7 +511,7 @@
             <div>
                 <h4 class="font-bold mb-4">Get in Touch</h4>
                 <p class="text-gray-400 text-sm mb-2">zuniq.studio@gmail.com</p>
-                <a href="tel:+923299073689" class="text-accentBlue text-sm font-bold">+92 329 9073689</a>
+                <a href="https://wa.me/923185390057?text=Assalam%20o%20Alaikum%20Jawad" target="_blank" class="text-accentBlue text-sm font-bold hover:underline">+92 318 5390057</a>
             </div>
             <div>
                 <h4 class="font-bold mb-4">Legal</h4>
@@ -230,7 +519,7 @@
             </div>
         </div>
         <div class="text-center pt-12 text-gray-700 text-[10px] uppercase tracking-widest">
-            &copy; 2025 Zuniq Studio | Founded by Jawad Ullah
+            &copy; 2026 Zuniq Studio | Founded by Jawad Ullah
         </div>
     </footer>
 
@@ -239,7 +528,7 @@
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Privacy Policy</h2>
-                <button onclick="closeModal()" class="text-gray-400"><i data-lucide="x"></i></button>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="x"></i></button>
             </div>
             <div class="text-gray-400 text-sm space-y-4">
                 <p><strong>1. Data Collection:</strong> We only collect information you provide via Calendly or WhatsApp to discuss your project.</p>
@@ -249,7 +538,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
         lucide.createIcons();
 
@@ -278,8 +566,28 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Modal Logic
-        function openModal() { document.getElementById('privacyModal').style.display = "block"; }
-        function closeModal() { document.getElementById('privacyModal').style.display = "none"; }
+        function openModal() { document.getElementById('privacyModal').classList.add('show'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('privacyModal').classList.remove('show'); document.body.style.overflow = ''; }
+        document.getElementById('privacyModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Ripple effect
+        document.querySelectorAll('.btn-ripple').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 700);
+            });
+        });
     </script>
 </body>
 </html>
