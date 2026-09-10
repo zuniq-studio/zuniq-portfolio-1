@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zuniq Studio | AI Automation by Jawad Ullah</title>
-    
-    <!-- SEO & Social Media -->
-    <meta name="description" content="Zuniq Studio - AI Automation & Websites by Jawad Ullah. Helping small businesses save time and capture leads.">
+    <title>Zuniq Studio | AI Automation & Client Stores by M Jawad</title>
+    <meta name="description" content="Zuniq Studio - AI Automation, Web Development & Online Stores. Browse our client store directory.">
     <meta property="og:title" content="Zuniq Studio | AI Automation & Web Studio">
-    <meta property="og:description" content="I build smart AI agents and high-converting websites for businesses.">
+    <meta property="og:description" content="Browse our directory of client stores. Visit and order directly from any store.">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -42,6 +39,11 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.3);
+        }
         .text-gradient {
             background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
             -webkit-background-clip: text;
@@ -51,59 +53,77 @@
             background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        #typewriter::after { content: "|"; animation: blink 0.7s infinite; }
+        #typewriter::after { content: "|"; animation: blink 0.7s infinite; color: #06B6D4; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Modal Style */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
-        .modal-content { background-color: #0B0F19; margin: 10% auto; padding: 30px; border: 1px solid #1e293b; width: 90%; max-width: 600px; border-radius: 20px; }
+
+        /* Image placeholder sticker */
+        .img-sticker {
+            border: 2px dashed rgba(37, 99, 235, 0.4);
+            background: repeating-linear-gradient(45deg, rgba(37,99,235,0.05), rgba(37,99,235,0.05) 10px, rgba(6,182,212,0.05) 10px, rgba(6,182,212,0.05) 20px);
+        }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); overflow-y: auto; }
+        .modal-content { background-color: #0B0F19; margin: 8% auto; padding: 30px; border: 1px solid #1e293b; width: 90%; max-width: 600px; border-radius: 20px; }
+
+        /* Category chip active state */
+        .cat-chip { transition: all 0.3s ease; }
+        .cat-chip.active {
+            background: linear-gradient(135deg, #2563EB, #06B6D4);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px -5px rgba(37,99,235,0.4);
+        }
     </style>
 </head>
 <body class="bg-dots">
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/923299073689" target="_blank" class="fixed bottom-6 right-6 z-[99] bg-green-500 p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+    <a href="https://wa.me/923185390057" target="_blank" class="fixed bottom-6 right-6 z-[99] bg-green-500 p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center" aria-label="Chat on WhatsApp">
         <i data-lucide="message-circle" class="text-white w-6 h-6"></i>
     </a>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-xl font-extrabold tracking-tight">
-                <a href="#"><span class="text-gradient">ZUNIQ</span> STUDIO</a>
-            </div>
-            
+            <a href="#" class="text-xl font-extrabold tracking-tight">
+                <span class="text-gradient">ZUNIQ</span> STUDIO
+            </a>
+
             <div class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="#about" class="hover:text-white transition-colors">About Me</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#stores" class="hover:text-white transition-colors">Client Stores</a>
                 <a href="#work" class="hover:text-white transition-colors">Demos</a>
-                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#team" class="hover:text-white transition-colors">Team</a>
             </div>
 
-            <div class="flex items-center space-x-3">
-                <a href="https://calendly.com/zuniq-studio/30min" target="_blank" class="bg-accentBlue hover:bg-blue-600 px-4 py-2 rounded-lg text-white text-xs font-bold transition-all">
-                    Book a Free Call
-                </a>
-            </div>
+            <a href="https://wa.me/923185390057" target="_blank" class="bg-accentBlue hover:bg-blue-600 px-4 py-2 rounded-lg text-white text-xs font-bold transition-all">
+                Hire Us
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="relative pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto text-center lg:text-left grid lg:grid-cols-2 gap-12 items-center">
             <div class="reveal">
-                <!-- Mobile Fixed Headline: text-4xl on mobile, text-7xl on desktop -->
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-6">
-                    AI Automation & <br>
-                    <span class="text-gradient">Websites That Grow</span>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                    <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-300">Directed by M Jawad</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.05] mb-6">
+                    Elite Digital <br>
+                    <span class="text-gradient">Production.</span>
                 </h1>
                 <div class="h-12 mb-8">
                     <p id="typewriter" class="text-lg md:text-xl text-gray-400 font-medium italic"></p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="https://calendly.com/zuniq-studio/30min" target="_blank" class="px-8 py-4 bg-gradient-to-r from-accentBlue to-accentCyan rounded-xl font-bold text-center shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
-                        Book a Free Call
+                    <a href="#stores" class="px-8 py-4 bg-gradient-to-r from-accentBlue to-accentCyan rounded-xl font-bold text-center shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
+                        Browse Client Stores
                     </a>
                     <a href="#work" class="px-8 py-4 border border-white/10 rounded-xl font-bold text-center hover:bg-white/5 transition-all">
                         View Our Work
@@ -117,15 +137,15 @@
                         <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <p class="font-mono text-sm text-blue-400">> Jawad Ullah: Solo Builder Mode Active</p>
-                    <p class="font-mono text-sm text-gray-500">> Deploying AI workflows for Peshawar small businesses...</p>
+                    <p class="font-mono text-sm text-blue-400">> Zuniq Studio: Production Mode Active</p>
+                    <p class="font-mono text-sm text-gray-500">> Deploying AI workflows & storefronts globally...</p>
                     <div class="mt-6 p-4 bg-white/5 rounded-lg border border-white/5">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-bold text-gray-400">Lead Capture Rate</span>
-                            <span class="text-xs text-green-400">+85%</span>
+                            <span class="text-xs font-bold text-gray-400">Stores Delivered</span>
+                            <span class="text-xs text-green-400">Live</span>
                         </div>
                         <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                            <div class="bg-accentBlue h-full w-[85%] animate-pulse"></div>
+                            <div class="bg-gradient-to-r from-accentBlue to-accentCyan h-full w-[100%]"></div>
                         </div>
                     </div>
                 </div>
@@ -133,53 +153,96 @@
         </div>
     </section>
 
-    <!-- About Section (Personalized) -->
+    <!-- About -->
     <section id="about" class="py-24 px-6 bg-darker/50">
         <div class="max-w-4xl mx-auto">
             <div class="reveal mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Who I Am</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
                 <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                    I’m <span class="text-white font-bold underline decoration-accentBlue">Jawad Ullah</span>, a solo AI automation developer based in **Peshawar**. I founded Zuniq Studio with one simple goal: to help small businesses save time and capture more leads through smart automation.
+                    <span class="text-white font-bold">Zuniq Studio</span> is a software house led by <span class="text-white font-bold underline decoration-accentBlue">M Jawad</span>, based in Peshawar, Pakistan. We build AI agents, custom web applications, and premium online stores for growing businesses.
                 </p>
                 <p class="text-gray-400 text-lg leading-relaxed">
-                    I’m not a large agency — I’m a hands-on builder who writes the code, designs the workflows, and deploys the final product myself. You get direct access to the person actually doing the work.
+                    From AI chatbots to e-commerce storefronts, we engineer digital experiences that save time, capture leads, and grow revenue — with full ownership of every line of code we write.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 reveal">
                 <div class="glass-card p-8 rounded-3xl">
                     <h3 class="text-xl font-bold mb-4 flex items-center text-accentCyan">
-                        <i data-lucide="check-circle" class="mr-2"></i> My Commitment
+                        <i data-lucide="check-circle" class="mr-2"></i> Our Commitment
                     </h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        I deliver working solutions and won’t stop until you’re satisfied. Your project won't be lost in a pipeline — you’ll have my full attention.
+                        We deliver working solutions and won’t stop until you’re satisfied. Your project gets our full attention — no outsourced work, no hidden fees.
                     </p>
                 </div>
-                <div class="glass-card p-8 rounded-3xl border-accentBlue/20">
+                <div class="glass-card p-8 rounded-3xl">
                     <h3 class="text-xl font-bold mb-4 flex items-center text-accentBlue">
-                        <i data-lucide="zap" class="mr-2"></i> Why Work With Me?
+                        <i data-lucide="zap" class="mr-2"></i> Why Work With Us?
                     </h3>
                     <ul class="text-gray-400 text-sm space-y-2">
                         <li>• Live Demos, Not Promises</li>
-                        <li>• No Tech Jargon, Just Results</li>
-                        <li>• Affordable & Flexible Rates</li>
-                        <li>• Modern Stack (OpenAI, n8n, Next.js)</li>
+                        <li>• Full Source Code Ownership</li>
+                        <li>• Modern Stack (Next.js, OpenAI, Supabase)</li>
+                        <li>• Support from Pakistan to the World</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Built So Far (Demos) -->
-    <section id="work" class="py-24 px-6">
+    <!-- CLIENT STORE DIRECTORY (Searchable) -->
+    <section id="stores" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan">Client Ecosystem</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4">Browse Our Client Stores</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Search by name or category. Visit any store, browse products, and order directly.</p>
+            </div>
+
+            <!-- Search + Category Filters -->
+            <div class="glass-card rounded-[2rem] p-6 md:p-8 mb-12 reveal">
+                <div class="relative mb-6">
+                    <i data-lucide="search" class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5"></i>
+                    <input id="searchInput" type="text" placeholder="Search stores... (perfume, fashion, decor)" class="w-full pl-14 pr-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-base font-medium outline-none focus:border-accentBlue transition-colors placeholder:text-gray-500" />
+                </div>
+                <div id="categoryChips" class="flex flex-wrap gap-2">
+                    <!-- Chips are injected by JS -->
+                </div>
+            </div>
+
+            <!-- Store Grid -->
+            <div id="storeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Store cards injected by JS -->
+            </div>
+
+            <!-- Empty state -->
+            <div id="emptyState" class="hidden text-center py-20 glass-card rounded-[2rem]">
+                <i data-lucide="shopping-bag" class="mx-auto text-gray-600 mb-4 w-12 h-12"></i>
+                <p class="text-gray-500 italic">No stores match your search. Try another keyword or category.</p>
+            </div>
+
+            <!-- Add-your-store CTA -->
+            <div class="mt-16 bg-gradient-to-br from-accentBlue/20 to-accentCyan/10 rounded-[2.5rem] p-10 md:p-14 text-center border border-white/10 relative overflow-hidden reveal">
+                <div class="relative z-10">
+                    <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tight mb-4">Want your store listed here?</h3>
+                    <p class="text-gray-300 mb-8 max-w-xl mx-auto">We build custom online stores with search, categories, cart, and WhatsApp ordering.</p>
+                    <a href="https://wa.me/923185390057" target="_blank" class="inline-block px-10 py-5 bg-white text-dark rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-accentCyan hover:text-white transition-all shadow-2xl">
+                        Book a Free Call →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos Section -->
+    <section id="work" class="py-24 px-6 bg-darker/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What I’ve Built So Far</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What We’ve Built</h2>
                 <p class="text-gray-400">Functional AI agents solving real business problems.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Demo 1 -->
                 <div class="glass-card p-8 rounded-3xl reveal">
                     <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="home" class="text-blue-400"></i>
@@ -188,7 +251,6 @@
                     <p class="text-gray-400 text-sm mb-6">Handles FAQs, pricing, and prayer break inquiries using Botpress and Google Sheets.</p>
                     <a href="https://bit.ly/3QLPTCf" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline">Try Demo →</a>
                 </div>
-                <!-- Demo 2 -->
                 <div class="glass-card p-8 rounded-3xl reveal delay-100">
                     <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="user-plus" class="text-cyan-400"></i>
@@ -197,7 +259,6 @@
                     <p class="text-gray-400 text-sm mb-6">A lead capture agent that can be embedded in any website within minutes to qualify leads.</p>
                     <a href="https://agent.jotform.com/019f3239d61870008ea2cda1401fa666044a" target="_blank" class="text-accentCyan font-bold text-xs uppercase tracking-widest hover:underline">Try Demo →</a>
                 </div>
-                <!-- Demo 3 -->
                 <div class="glass-card p-8 rounded-3xl reveal delay-200">
                     <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="smartphone" class="text-purple-400"></i>
@@ -210,6 +271,45 @@
         </div>
     </section>
 
+    <!-- Team -->
+    <section id="team" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-accentCyan">Production Unit</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-4">Meet the Engineers</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-3xl text-center reveal">
+                    <div class="img-sticker w-32 h-32 rounded-[2rem] mx-auto mb-6 flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="user" class="w-10 h-10"></i>
+                        <p class="mt-2 text-[9px] font-bold uppercase tracking-widest">Add Photo</p>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">M Jawad</h3>
+                    <p class="text-accentCyan text-[10px] font-bold uppercase tracking-widest mb-4">Founder & CEO</p>
+                    <p class="text-gray-400 text-sm">Visionary architect. Expert in AI product strategy and high-end digital identities.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center reveal delay-100">
+                    <div class="img-sticker w-32 h-32 rounded-[2rem] mx-auto mb-6 flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="user" class="w-10 h-10"></i>
+                        <p class="mt-2 text-[9px] font-bold uppercase tracking-widest">Add Photo</p>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Rizwanullah</h3>
+                    <p class="text-accentCyan text-[10px] font-bold uppercase tracking-widest mb-4">Senior Engineer</p>
+                    <p class="text-gray-400 text-sm">Master of backend logic, cloud infrastructure, and database security.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center reveal delay-200">
+                    <div class="img-sticker w-32 h-32 rounded-[2rem] mx-auto mb-6 flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="user" class="w-10 h-10"></i>
+                        <p class="mt-2 text-[9px] font-bold uppercase tracking-widest">Add Photo</p>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Waqas Rahim</h3>
+                    <p class="text-accentCyan text-[10px] font-bold uppercase tracking-widest mb-4">Creative Lead</p>
+                    <p class="text-gray-400 text-sm">UI/UX specialist. Turning complex requirements into peaceful visuals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-16 border-t border-white/5 bg-darker px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
@@ -217,20 +317,22 @@
                 <div class="text-xl font-extrabold mb-4 uppercase">
                     <span class="text-gradient">ZUNIQ</span> STUDIO
                 </div>
-                <p class="text-gray-500 text-sm">Automating growth for small businesses.</p>
+                <p class="text-gray-500 text-sm">Automating growth for small businesses. Based in Peshawar, serving the world.</p>
             </div>
             <div>
                 <h4 class="font-bold mb-4">Get in Touch</h4>
-                <p class="text-gray-400 text-sm mb-2">zuniq.studio@gmail.com</p>
-                <a href="tel:+923299073689" class="text-accentBlue text-sm font-bold">+92 329 9073689</a>
+                <a href="mailto:zuniq.studio@gmail.com" class="text-gray-400 text-sm hover:text-white block mb-2">zuniq.studio@gmail.com</a>
+                <a href="https://wa.me/923185390057" target="_blank" class="text-accentBlue text-sm font-bold">WhatsApp: 0318 539 0057</a>
             </div>
             <div>
-                <h4 class="font-bold mb-4">Legal</h4>
+                <h4 class="font-bold mb-4">Explore</h4>
+                <a href="https://zuniq.xyz" class="text-gray-400 text-xs hover:text-white block mb-2">Portfolio — zuniq.xyz</a>
+                <a href="https://zuniq.site" class="text-gray-400 text-xs hover:text-white block mb-2">AI Invoices — zuniq.site</a>
                 <button onclick="openModal()" class="text-gray-400 text-xs hover:text-white underline">Privacy Policy</button>
             </div>
         </div>
         <div class="text-center pt-12 text-gray-700 text-[10px] uppercase tracking-widest">
-            &copy; 2025 Zuniq Studio | Founded by Jawad Ullah
+            &copy; 2025 Zuniq Studio | Directed by M Jawad
         </div>
     </footer>
 
@@ -242,7 +344,7 @@
                 <button onclick="closeModal()" class="text-gray-400"><i data-lucide="x"></i></button>
             </div>
             <div class="text-gray-400 text-sm space-y-4">
-                <p><strong>1. Data Collection:</strong> We only collect information you provide via Calendly or WhatsApp to discuss your project.</p>
+                <p><strong>1. Data Collection:</strong> We only collect information you provide via WhatsApp or email to discuss your project.</p>
                 <p><strong>2. Usage:</strong> Your details are never shared. We only use them to build your automation systems.</p>
                 <p><strong>3. Security:</strong> We use industry-standard tools (OpenAI, Supabase) to keep your automation data secure.</p>
             </div>
@@ -253,13 +355,13 @@
     <script>
         lucide.createIcons();
 
-        // Typewriter Effect
-        const phrases = ["Building smart chatbots", "Automating lead capture", "Saving small businesses time", "Solo builder based in Peshawar"];
+        // ─── Typewriter Effect ───
+        const phrases = ["AI Agents & Chatbots", "Custom Web Apps", "Online Store Development", "Built in Peshawar, for the World"];
         let i = 0, j = 0, currentPhrase = [], isDeleting = false;
         function loop() {
-            const typewriterElement = document.getElementById('typewriter');
-            if(typewriterElement) {
-                typewriterElement.innerHTML = currentPhrase.join('');
+            const el = document.getElementById('typewriter');
+            if (el) {
+                el.innerHTML = currentPhrase.join('');
                 if (i < phrases.length) {
                     if (!isDeleting && j <= phrases[i].length) { currentPhrase.push(phrases[i][j++]); }
                     else if (isDeleting && j <= phrases[i].length) { currentPhrase.pop(); j--; }
@@ -271,15 +373,134 @@
         }
         loop();
 
-        // Scroll Animations
+        // ─── Scroll Animations ───
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Modal Logic
+        // ─── Modal ───
         function openModal() { document.getElementById('privacyModal').style.display = "block"; }
         function closeModal() { document.getElementById('privacyModal').style.display = "none"; }
+
+        // ─── STORE DATA (Add more stores here anytime) ───
+        const STORES = [
+            {
+                id: 'labbaik',
+                name: 'Labbaik Perfume',
+                category: 'Perfume',
+                tag: 'Luxury Retail',
+                desc: 'Premium fragrance e-commerce with high-speed checkout and immersive product visuals.',
+                url: 'https://labbaikperfume.com',
+                location: 'Pakistan',
+                rating: '5.0',
+                featured: true,
+            },
+            {
+                id: 'khyber',
+                name: 'Khyber Collection',
+                category: 'Fashion & Decor',
+                tag: 'Lifestyle Boutique',
+                desc: 'Elite home decor and designer purses. A masterpiece of mobile-first UI/UX.',
+                url: 'https://khybercollection.com',
+                location: 'Pakistan',
+                rating: '5.0',
+                featured: true,
+            },
+            // ← Add your next store here (copy this block):
+            // {
+            //     id: 'store-id',
+            //     name: 'Store Name',
+            //     category: 'Perfume',
+            //     tag: 'Short Label',
+            //     desc: 'One-line description of the store.',
+            //     url: 'https://store-url.com',
+            //     location: 'City, Country',
+            //     rating: '5.0',
+            //     featured: false,
+            // },
+        ];
+
+        const CATEGORIES = ['All', 'Perfume', 'Fashion & Decor', 'Electronics', 'Food', 'Health', 'Services'];
+
+        let activeCategory = 'All';
+        let searchQuery = '';
+
+        // ─── Render Category Chips ───
+        function renderChips() {
+            const container = document.getElementById('categoryChips');
+            container.innerHTML = CATEGORIES.map(cat => `
+                <button onclick="setCategory('${cat}')" class="cat-chip ${activeCategory === cat ? 'active' : ''} px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-[10px] font-black uppercase tracking-widest hover:border-accentBlue">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // ─── Render Store Cards ───
+        function renderStores() {
+            const grid = document.getElementById('storeGrid');
+            const empty = document.getElementById('emptyState');
+            const q = searchQuery.toLowerCase().trim();
+
+            const filtered = STORES.filter(s => {
+                const matchCat = activeCategory === 'All' || s.category === activeCategory;
+                const matchQ = !q || s.name.toLowerCase().includes(q) || s.category.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q);
+                return matchCat && matchQ;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(s => `
+                <div class="glass-card rounded-[2rem] overflow-hidden">
+                    <!-- IMAGE PLACEHOLDER STICKER -->
+                    <div class="img-sticker h-48 flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="shopping-bag" class="w-10 h-10"></i>
+                        <p class="mt-3 text-[9px] font-bold uppercase tracking-[0.3em]">Add Store Image Here</p>
+                    </div>
+
+                    <div class="p-7">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-accentBlue/10 text-accentCyan rounded-full text-[9px] font-black uppercase tracking-widest">${s.category}</span>
+                            ${s.featured ? `<span class="flex items-center gap-1 text-[9px] font-black uppercase text-yellow-400 tracking-widest"><i data-lucide="star" class="w-3 h-3 fill-current"></i> Featured</span>` : ''}
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">${s.name}</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">${s.desc}</p>
+
+                        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-6">
+                            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${s.location}</span>
+                            <span class="flex items-center gap-1 text-accentCyan"><i data-lucide="star" class="w-3 h-3 fill-current"></i> ${s.rating}</span>
+                        </div>
+
+                        <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-between px-6 py-4 bg-gradient-to-r from-accentBlue to-accentCyan text-white rounded-2xl font-black uppercase tracking-widest text-[10px] hover:scale-[1.02] transition-transform">
+                            Visit & Order <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // ─── Event Handlers ───
+        function setCategory(cat) {
+            activeCategory = cat;
+            renderChips();
+            renderStores();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderStores();
+        });
+
+        // ─── Initial Render ───
+        renderChips();
+        renderStores();
     </script>
 </body>
 </html>
